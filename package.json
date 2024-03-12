@@ -16,8 +16,29 @@
       {
         "command": "logexpert.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "logexpert.OpenFile",
+        "title": "Open File in LogExpert"
       }
-    ]
+    ],
+    "viewsContainers": {
+      "panel": [
+        {
+          "id": "logexpert-panel",
+          "title": "LogExpert",
+          "icon": ""
+        }
+      ]
+    },
+    "views": {
+      "logexpert-panel": [
+        {
+          "id": "logexpert-filters",
+          "name": "filters"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
