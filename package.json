@@ -14,12 +14,12 @@
   "contributes": {
     "commands": [
       {
-        "command": "logexpert.helloWorld",
-        "title": "Hello World"
-      },
-      {
         "command": "logexpert.OpenFile",
         "title": "Open File in LogExpert"
+      },
+      {
+        "command": "logexpert.AddFilter",
+        "title": "Add Filter"
       }
     ],
     "viewsContainers": {
@@ -28,6 +28,15 @@
           "id": "logexpert-panel",
           "title": "LogExpert",
           "icon": ""
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "logexpert.AddFilter",
+          "when": "view == logexpert-filters",
+          "group": "navigation"
         }
       ]
     },

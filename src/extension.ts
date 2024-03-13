@@ -15,6 +15,13 @@ export function activate(context: vscode.ExtensionContext) {
 	const filterProvider = new FilterProvider();
 	vscode.window.createTreeView("logexpert-filters", { "treeDataProvider": filterProvider });
 
+	vscode.commands.registerCommand('logexpert.AddFilter', async () => {
+		const newLabel = await vscode.window.showInputBox({ value: "", prompt: 'Enter new label' });
+		if (newLabel !== undefined) {
+			filterProvider.addItem(newLabel);
+		}
+	});
+
 
 	let disposable = vscode.commands.registerCommand('logexpert.OpenFile', async () => {
 		const activeEditor = vscode.window.activeTextEditor;
