@@ -1,12 +1,13 @@
 import * as vscode from 'vscode';
 
-class FilterItem extends vscode.TreeItem {
+export class FilterItem extends vscode.TreeItem {
   constructor(
-    public readonly label: string,
+    public label: string,
     public readonly collapsibleState: vscode.TreeItemCollapsibleState,
     public readonly command?: vscode.Command
   ) {
     super(label, collapsibleState);
+    this.contextValue = "FilterItem";
   }
 }
 
@@ -20,9 +21,14 @@ export class FilterProvider implements vscode.TreeDataProvider<FilterItem> {
     return element;
   }
 
-  addItem(label: string) {
+  addItem(label: string): void {
     const filterItem = new FilterItem(label, vscode.TreeItemCollapsibleState.None);
     this.filterItems.push(filterItem);
+    this._onDidChangeTreeData.fire();
+  }
+
+  editItem(item: FilterItem, newlabel: string): void {
+    item.label = newlabel;
     this._onDidChangeTreeData.fire();
   }
 

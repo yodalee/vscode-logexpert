@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import { FilterProvider } from './filterprovider';
+import { FilterProvider, FilterItem } from './filterprovider';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -16,9 +16,16 @@ export function activate(context: vscode.ExtensionContext) {
 	vscode.window.createTreeView("logexpert-filters", { "treeDataProvider": filterProvider });
 
 	vscode.commands.registerCommand('logexpert.AddFilter', async () => {
-		const newLabel = await vscode.window.showInputBox({ value: "", prompt: 'Enter new label' });
+		const label = await vscode.window.showInputBox({ value: "", prompt: 'Enter new label' });
+		if (label !== undefined) {
+			filterProvider.addItem(label);
+		}
+	});
+
+	vscode.commands.registerCommand('logexpert.EditFilter', async (item: FilterItem) => {
+		const newLabel = await vscode.window.showInputBox({ value: item.label, prompt: 'Enter new label' });
 		if (newLabel !== undefined) {
-			filterProvider.addItem(newLabel);
+			filterProvider.editItem(item, newLabel);
 		}
 	});
 

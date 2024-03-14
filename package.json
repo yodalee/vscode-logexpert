@@ -19,7 +19,19 @@
       },
       {
         "command": "logexpert.AddFilter",
-        "title": "Add Filter"
+        "title": "Add Filter",
+        "icon": {
+          "light": "resources/light/add.svg",
+          "dark": "resources/dark/add.svg"
+        }
+      },
+      {
+        "command": "logexpert.EditFilter",
+        "title": "Edit Filter",
+        "icon": {
+          "light": "resources/light/edit.svg",
+          "dark": "resources/dark/edit.svg"
+        }
       }
     ],
     "viewsContainers": {
@@ -37,6 +49,13 @@
           "command": "logexpert.AddFilter",
           "when": "view == logexpert-filters",
           "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "logexpert.EditFilter",
+          "when": "view == logexpert-filters && viewItem == FilterItem",
+          "group": "inline"
         }
       ]
     },
