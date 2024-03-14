@@ -32,6 +32,14 @@ export class FilterProvider implements vscode.TreeDataProvider<FilterItem> {
     this._onDidChangeTreeData.fire();
   }
 
+  deleteItem(item: FilterItem): void {
+    const index = this.filterItems.indexOf(item);
+    if (index !== -1) {
+      this.filterItems.splice(index, 1);
+      this._onDidChangeTreeData.fire();
+    }
+  }
+
   getChildren(element?: FilterItem): Thenable<FilterItem[]> {
     // Implement logic to fetch filter items
     return Promise.resolve(this.filterItems);

@@ -29,6 +29,11 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
+	vscode.commands.registerCommand('logexpert.DeleteFilter', async (item: FilterItem) => {
+		filterProvider.deleteItem(item);
+	});
+
+	filterProvider.addItem("a");
 
 	let disposable = vscode.commands.registerCommand('logexpert.OpenFile', async () => {
 		const activeEditor = vscode.window.activeTextEditor;

@@ -32,6 +32,14 @@
           "light": "resources/light/edit.svg",
           "dark": "resources/dark/edit.svg"
         }
+      },
+      {
+        "command": "logexpert.DeleteFilter",
+        "title": "Delete Filter",
+        "icon": {
+          "light": "resources/light/delete.svg",
+          "dark": "resources/dark/delete.svg"
+        }
       }
     ],
     "viewsContainers": {
@@ -55,7 +63,12 @@
         {
           "command": "logexpert.EditFilter",
           "when": "view == logexpert-filters && viewItem == FilterItem",
-          "group": "inline"
+          "group": "inline@1"
+        },
+        {
+          "command": "logexpert.DeleteFilter",
+          "when": "view == logexpert-filters && viewItem == FilterItem",
+          "group": "inline@2"
         }
       ]
     },
